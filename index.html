@@ -40,10 +40,9 @@
       height: 100%;
       width: 0%;
       background: var(--gold);
-      transition: width 15s linear; 
+      transition: width 8s linear; /* Default 8s transition */
     }
 
-    /* Intro specific progress speed */
     .intro-progress { transition: width 3s linear !important; }
 
     .screen {
@@ -55,7 +54,7 @@
 
     .screen.active {
       display: block;
-      animation: smoothFadeIn 2.5s ease forwards;
+      animation: smoothFadeIn 2s ease forwards;
     }
 
     @keyframes smoothFadeIn {
@@ -70,7 +69,6 @@
       backdrop-filter: blur(15px);
       -webkit-backdrop-filter: blur(15px); 
       border: 1px solid rgba(255, 255, 255, 0.05);
-      position: relative;
     }
 
     h1 {
@@ -101,20 +99,20 @@
       font-size: 0.8rem;
     }
 
-    .faded-end {
-      font-size: 0.8rem;
-      color: var(--text-gray);
-      margin-top: 25px;
-      font-style: italic;
-      opacity: 0.6;
-    }
-
     .username-tag {
-      margin-top: 20px;
+      margin-top: 15px;
       font-size: 0.75rem;
       color: var(--text-gray);
       letter-spacing: 1px;
       opacity: 0.4;
+    }
+
+    .faded-end {
+      font-size: 0.8rem;
+      color: var(--text-gray);
+      margin-top: 20px;
+      font-style: italic;
+      opacity: 0.6;
     }
 
     .particle {
@@ -125,7 +123,6 @@
       opacity: 0.15;
       animation: float linear infinite;
     }
-
     @keyframes float { to { transform: translateY(-100vh) translateX(15px); } }
   </style>
 </head>
@@ -137,7 +134,7 @@
     <source src="https://pagalfree.com/play/128-Pal%20Pal%20-%20Afusic%20128%20Kbps.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- Section 1 (Intro - 3 Seconds) -->
+  <!-- Screen 1: Intro (3 Seconds) -->
   <div class="screen active" id="s1">
     <div class="card">
       <h1>Kuch log zindagi se jaate nahi…<br>bas zindagi ka hissa rehna band kar dete hain 💔</h1>
@@ -146,15 +143,15 @@
     <div class="username-tag">@swan____2010</div>
   </div>
 
-  <!-- Screens 2 to 9 (15 Seconds each) -->
+  <!-- Screen 2-9: (8 Seconds Each) -->
   <div class="screen" id="s2"><div class="card"><p>Mujhe aaj bhi yaad hai jab sab kuch simple tha 🙂 jab baatein kam thi par feelings genuine thi ❤️</p></div><div class="username-tag">@swan____2010</div></div>
-  <div class="screen" id="s3"><div class="card"><p>Mujhe nahi pata humare beech cheezein kab badli. Shayad dheere-dheere ⏳ shayad ek hi pal mein ⚡ Bas itna pata hai— jo bhi tha, mere liye real tha 💯</p></div><div class="username-tag">@swan____2010</div></div>
-  <div class="screen" id="s4"><div class="card"><p>Maine kabhi perfection ka vaada nahi kiya, lekin maine jhooth bhi nahi bola. Jo tha, jaise tha, maine poore dil se diya ❤️‍🩹</p></div><div class="username-tag">@swan____2010</div></div>
-  <div class="screen" id="s5"><div class="card"><p>Tum kabhi meri safe place thi 🏠 jahan main bina bole samjha jaata tha, aur aaj… tum sirf ek yaad ho jo main chup-chaap apne saath leke chalta hoon 🚶‍♂️</p></div><div class="username-tag">@swan____2010</div></div>
-  <div class="screen" id="s6"><div class="card"><p>Sach yeh hai ki kuch feelings logon ke jaane ke baad bhi zinda rehti hain 💭 woh dheere-dheere kam hoti hain, lekin kabhi poori tarah marti nahi 💔</p></div><div class="username-tag">@swan____2010</div></div>
+  <div class="screen" id="s3"><div class="card"><p>Mujhe nahi pata humare beech cheezein kab badli. Shayad dheere-dheere ⏳ shayad ek hi pal mein ⚡</p></div><div class="username-tag">@swan____2010</div></div>
+  <div class="screen" id="s4"><div class="card"><p>Bas itna pata hai— jo bhi tha, mere liye real tha 💯. Maine kabhi perfection ka vaada nahi kiya.</p></div><div class="username-tag">@swan____2010</div></div>
+  <div class="screen" id="s5"><div class="card"><p>Tum kabhi meri safe place thi 🏠 jahan main bina bole samjha jaata tha, aur aaj… tum sirf ek yaad ho 🚶‍♂️</p></div><div class="username-tag">@swan____2010</div></div>
+  <div class="screen" id="s6"><div class="card"><p>Sach yeh hai ki kuch feelings logon ke jaane ke baad bhi zinda rehti hain 💭 woh kabhi poori tarah marti nahi 💔</p></div><div class="username-tag">@swan____2010</div></div>
   <div class="screen" id="s7"><div class="card"><p>Mujhe umeed hai tum khush ho 😊 sach mein khush. Chahe us khushi mein mera naam kahin bhi na ho 🤍</p></div><div class="username-tag">@swan____2010</div></div>
-  <div class="screen" id="s8"><div class="card"><p>Aaj bhi kuch gaane sunta hoon 🎧 toh tum yaad aa jaati ho... Par main seekh raha hoon tumhare bina rehna 🌱</p></div><div class="username-tag">@swan____2010</div></div>
-  <div class="screen" id="s9"><div class="card"><p>Aur agar kahin, kabhi, tum mujhe yaad karo… toh bas itna samajh lena— koi tha jisne tumhe poore dil se chaha था 🤍</p><p class="faded-end">Har chapter ko closure ki zarurat nahi hoti. Kuch kahaniyaan bas acceptance maangti hain… 🌑🕊️</p></div><div class="username-tag">@swan____2010</div></div>
+  <div class="screen" id="s8"><div class="card"><p>Aaj bhi kuch gaane sunta hoon 🎧 toh tum yaad aa jaati ho... Main seekh raha hoon tumhare bina rehna 🌱</p></div><div class="username-tag">@swan____2010</div></div>
+  <div class="screen" id="s9"><div class="card"><p>Agar kabhi tum mujhe yaad karo… toh bas itna samajh lena— koi tha jisne tumhe poore dil se chaha tha 🤍</p><p class="faded-end">Kuch kahaniyaan bas acceptance maangti hain… 🌑🕊️</p></div><div class="username-tag">@swan____2010</div></div>
 
   <script>
     const music = document.getElementById('music');
@@ -167,19 +164,18 @@
       music.play();
       document.getElementById('start-btn').style.display = 'none';
       
-      // Intro slide moves fast (3 seconds)
+      // First slide: 3 seconds
       progressBar.classList.add('intro-progress');
       progressBar.style.width = (1 / totalSteps) * 100 + '%';
       
       setTimeout(() => {
         showNextScreen();
-        // Start 15s interval for remaining slides
         progressBar.classList.remove('intro-progress');
-        startLongAutomation();
+        startAutomation();
       }, 3000);
     }
 
-    function startLongAutomation() {
+    function startAutomation() {
       const autoTimer = setInterval(() => {
         if (currentStep < totalSteps) {
           showNextScreen();
@@ -187,7 +183,7 @@
           clearInterval(autoTimer);
           progressBar.style.width = '100%';
         }
-      }, 15000);
+      }, 8000); // 8 Seconds for following slides
     }
 
     function showNextScreen() {
@@ -202,7 +198,7 @@
       }
     }
 
-    function createParticle() {
+    setInterval(() => {
       const p = document.createElement('div');
       p.classList.add('particle');
       p.style.width = Math.random() * 3 + 'px';
@@ -212,8 +208,8 @@
       p.style.animationDuration = Math.random() * 5 + 10 + 's';
       document.body.appendChild(p);
       setTimeout(() => p.remove(), 12000);
-    }
-    setInterval(createParticle, 500);
+    }, 500);
   </script>
 </body>
 </html>
+
