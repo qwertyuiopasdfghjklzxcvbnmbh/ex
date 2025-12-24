@@ -11,6 +11,7 @@
       --gold: #dfc27d;
       --soft-white: #f4f4f4;
       --text-gray: #a0a0a0;
+      --broken-heart-color: #a33b3b;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
@@ -21,29 +22,15 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
+      overflow: hidden; /* Hide overflow to make hearts fall from above */
       color: var(--soft-white);
       text-align: center;
     }
 
-    .progress-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: rgba(255,255,255,0.05);
-      z-index: 100;
+    /* Remove the progress bar at the top */
+    .progress-container, .mini-loader-bg {
+      display: none !important;
     }
-
-    #progress-bar {
-      height: 100%;
-      width: 0%;
-      background: var(--gold);
-      transition: width 8s linear; /* Default 8s transition */
-    }
-
-    .intro-progress { transition: width 3s linear !important; }
 
     .screen {
       display: none;
@@ -54,11 +41,11 @@
 
     .screen.active {
       display: block;
-      animation: smoothFadeIn 2s ease forwards;
+      animation: smoothFadeIn 1s ease forwards;
     }
 
     @keyframes smoothFadeIn {
-      from { opacity: 0; transform: translateY(15px); filter: blur(8px); }
+      from { opacity: 0; transform: translateY(10px); filter: blur(5px); }
       to { opacity: 1; transform: translateY(0); filter: blur(0); }
     }
 
@@ -71,21 +58,8 @@
       border: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    h1 {
-      font-family: 'Dancing Script', cursive;
-      font-size: 1.8rem;
-      color: var(--gold);
-      margin-bottom: 20px;
-      line-height: 1.5;
-    }
-
-    p { 
-      font-size: 0.95rem; 
-      line-height: 1.7; 
-      color: var(--soft-white); 
-      font-weight: 300;
-      white-space: pre-line;
-    }
+    h1 { font-family: 'Dancing Script', cursive; font-size: 1.8rem; color: var(--gold); margin-bottom: 20px; line-height: 1.5; }
+    p { font-size: 0.95rem; line-height: 1.7; color: var(--soft-white); font-weight: 300; white-space: pre-line; }
 
     #start-btn {
       margin-top: 30px;
@@ -94,47 +68,42 @@
       border: 1px solid var(--gold);
       color: var(--gold);
       cursor: pointer;
-      letter-spacing: 2px;
       text-transform: uppercase;
       font-size: 0.8rem;
     }
 
-    .username-tag {
-      margin-top: 15px;
-      font-size: 0.75rem;
-      color: var(--text-gray);
-      letter-spacing: 1px;
-      opacity: 0.4;
-    }
+    .username-tag { margin-top: 15px; font-size: 0.75rem; color: var(--text-gray); letter-spacing: 1px; opacity: 0.5; }
+    .faded-end { font-size: 0.8rem; color: var(--text-gray); margin-top: 20px; font-style: italic; opacity: 0.6; }
 
-    .faded-end {
-      font-size: 0.8rem;
-      color: var(--text-gray);
-      margin-top: 20px;
-      font-style: italic;
-      opacity: 0.6;
-    }
-
-    .particle {
+    /* Broken Heart Animation */
+    .broken-heart {
       position: fixed;
-      background: white;
-      border-radius: 50%;
+      top: -50px; /* Start above the viewport (address bar area) */
+      color: var(--broken-heart-color);
       pointer-events: none;
-      opacity: 0.15;
-      animation: float linear infinite;
+      z-index: 1000;
+      animation: fallAndFade linear forwards;
     }
-    @keyframes float { to { transform: translateY(-100vh) translateX(15px); } }
+
+    @keyframes fallAndFade {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0.2;
+      }
+    }
   </style>
 </head>
 <body>
-
-  <div class="progress-container"><div id="progress-bar"></div></div>
 
   <audio id="music" loop>
     <source src="https://pagalfree.com/play/128-Pal%20Pal%20-%20Afusic%20128%20Kbps.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- Screen 1: Intro (3 Seconds) -->
+  <!-- Screen 1: Intro (3s) -->
   <div class="screen active" id="s1">
     <div class="card">
       <h1>Kuch log zindagi se jaate nahi…<br>bas zindagi ka hissa rehna band kar dete hain 💔</h1>
@@ -143,7 +112,7 @@
     <div class="username-tag">@swan____2010</div>
   </div>
 
-  <!-- Screen 2-9: (8 Seconds Each) -->
+  <!-- Screens 2-9: (8s) -->
   <div class="screen" id="s2"><div class="card"><p>Mujhe aaj bhi yaad hai jab sab kuch simple tha 🙂 jab baatein kam thi par feelings genuine thi ❤️</p></div><div class="username-tag">@swan____2010</div></div>
   <div class="screen" id="s3"><div class="card"><p>Mujhe nahi pata humare beech cheezein kab badli. Shayad dheere-dheere ⏳ shayad ek hi pal mein ⚡</p></div><div class="username-tag">@swan____2010</div></div>
   <div class="screen" id="s4"><div class="card"><p>Bas itna pata hai— jo bhi tha, mere liye real tha 💯. Maine kabhi perfection ka vaada nahi kiya.</p></div><div class="username-tag">@swan____2010</div></div>
@@ -155,24 +124,21 @@
 
   <script>
     const music = document.getElementById('music');
-    const progressBar = document.getElementById('progress-bar');
     let currentStep = 1;
     const totalSteps = 9;
+    const slideDuration = 8000; // 8 Seconds for slides 2-9
+    const introDuration = 3000; // 3 Seconds for slide 1
 
     function beginMagic() {
       music.volume = 0.2;
       music.play();
       document.getElementById('start-btn').style.display = 'none';
       
-      // First slide: 3 seconds
-      progressBar.classList.add('intro-progress');
-      progressBar.style.width = (1 / totalSteps) * 100 + '%';
-      
+      // Intro slide moves fast
       setTimeout(() => {
         showNextScreen();
-        progressBar.classList.remove('intro-progress');
         startAutomation();
-      }, 3000);
+      }, introDuration);
     }
 
     function startAutomation() {
@@ -181,9 +147,8 @@
           showNextScreen();
         } else {
           clearInterval(autoTimer);
-          progressBar.style.width = '100%';
         }
-      }, 8000); // 8 Seconds for following slides
+      }, slideDuration); 
     }
 
     function showNextScreen() {
@@ -194,21 +159,26 @@
         current.style.display = 'none';
         next.style.display = 'block';
         setTimeout(() => next.classList.add('active'), 50);
-        progressBar.style.width = (currentStep / totalSteps) * 100 + '%';
       }
     }
+    
+    // Function to create and animate broken hearts
+    function createBrokenHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('broken-heart');
+      heart.innerHTML = '💔';
+      heart.style.left = Math.random() * 95 + 'vw';
+      heart.style.fontSize = (Math.random() * 20 + 20) + 'px'; // Size between 20px and 40px
+      heart.style.animationDuration = (Math.random() * 4 + 6) + 's'; // Fall speed 6s to 10s
+      
+      document.body.appendChild(heart);
+      // Remove heart element after animation finishes
+      setTimeout(() => heart.remove(), 10000); 
+    }
 
-    setInterval(() => {
-      const p = document.createElement('div');
-      p.classList.add('particle');
-      p.style.width = Math.random() * 3 + 'px';
-      p.style.height = p.style.width;
-      p.style.left = Math.random() * 100 + 'vw';
-      p.style.top = '110vh';
-      p.style.animationDuration = Math.random() * 5 + 10 + 's';
-      document.body.appendChild(p);
-      setTimeout(() => p.remove(), 12000);
-    }, 500);
+    // Spawn hearts every 500ms
+    setInterval(createBrokenHeart, 500);
+
   </script>
 </body>
 </html>
