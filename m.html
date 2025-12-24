@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For Someone I Once Loved 🕊️</title>
+  <link href="fonts.googleapis.com" rel="stylesheet">
+
+  <style>
+    :root {
+      --gold: #dfc27d;
+      --soft-white: #f4f4f4;
+      --text-gray: #a0a0a0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+    body {
+      height: 100vh;
+      background: radial-gradient(circle at center, #1a1a1a, #000000);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      color: var(--soft-white);
+      text-align: center;
+    }
+
+    .progress-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: rgba(255,255,255,0.05);
+      z-index: 100;
+    }
+
+    #progress-bar {
+      height: 100%;
+      width: 0%;
+      background: var(--gold);
+      transition: width 15s linear; /* Matches the 15s delay */
+    }
+
+    .screen {
+      display: none;
+      opacity: 0;
+      width: 90%;
+      max-width: 550px;
+    }
+
+    .screen.active {
+      display: block;
+      animation: smoothFadeIn 2.5s ease forwards;
+    }
+
+    @keyframes smoothFadeIn {
+      from { opacity: 0; transform: translateY(15px); filter: blur(8px); }
+      to { opacity: 1; transform: translateY(0); filter: blur(0); }
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.02);
+      padding: 40px 25px;
+      border-radius: 20px;
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px); 
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      position: relative;
+    }
+
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.8rem;
+      color: var(--gold);
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    p { 
+      font-size: 0.95rem; 
+      line-height: 1.7; 
+      color: var(--soft-white); 
+      font-weight: 300;
+      white-space: pre-line;
+    }
+
+    #start-btn {
+      margin-top: 30px;
+      padding: 12px 40px;
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      cursor: pointer;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      transition: 0.3s;
+    }
+
+    #start-btn:hover { background: var(--gold); color: #000; }
+
+    .faded-end {
+      font-size: 0.8rem;
+      color: var(--text-gray);
+      margin-top: 25px;
+      font-style: italic;
+      opacity: 0.6;
+    }
+
+    .username-tag {
+      margin-top: 20px;
+      font-size: 0.75rem;
+      color: var(--text-gray);
+      letter-spacing: 1px;
+      opacity: 0.4;
+    }
+
+    .particle {
+      position: fixed;
+      background: white;
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0.15;
+      animation: float linear infinite;
+    }
+
+    @keyframes float { to { transform: translateY(-100vh) translateX(15px); } }
+  </style>
+</head>
+<body>
+
+  <div class="progress-container"><div id="progress-bar"></div></div>
+
+  <audio id="music" loop>
+    <source src="https://pagalfree.com/play/128-Pal%20Pal%20-%20Afusic%20128%20Kbps.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Screen 1 -->
+  <div class="screen active" id="s1">
+    <div class="card">
+      <h1>Kuch log zindagi se jaate nahi…<br>bas zindagi ka hissa rehna band kar dete hain 💔</h1>
+      <button id="start-btn" onclick="beginMagic()">Open</button>
+    </div>
+    <div class="username-tag">@swan____2010</div>
+  </div>
+
+  <!-- Screen 2 -->
+  <div class="screen" id="s2">
+    <div class="card">
+      <p>Mujhe aaj bhi yaad hai
+      jab sab kuch simple tha 🙂
+      jab baatein kam thi
+      par feelings genuine thi ❤️
+
+      Mujhe nahi pata humare beech cheezein kab badli.
+      Shayad dheere-dheere ⏳
+      shayad ek hi pal mein ⚡
+
+      Bas itna pata hai—
+      jo bhi tha, mere liye real tha 💯</p>
+    </div>
+    <div class="username-tag">@swan____2010</div>
+  </div>
+
+  <!-- Screen 3 -->
+  <div class="screen" id="s3">
+    <div class="card">
+      <p>Maine kabhi perfection ka vaada nahi kiya,
+      lekin maine jhooth bhi nahi bola.
+      Jo tha, jaise tha,
+      maine poore dil se diya ❤️‍🩹
+
+      Kabhi-kabhi sochta hoon
+      shayad main thoda zyada care kar gaya,
+      shayad tumhe utni zarurat hi nahi thi
+      jitni mujhe tumhari thi 🫂</p>
+    </div>
+    <div class="username-tag">@swan____2010</div>
+  </div>
+
+  <!-- Screen 4 -->
+  <div class="screen" id="s4">
+    <div class="card">
+      <p>Tum kabhi meri safe place thi 🏠
+      jahan main bina bole samjha jaata tha,
+      aur aaj…
+      tum sirf ek yaad ho
+      jo main chup-chaap apne saath leke chalta hoon 🚶‍♂️
+
+      Main yeh isliye nahi likh raha
+      ki tumhe guilt ho 😔
+      main isliye nahi likh raha hoon
+      kyunki kuch baatein
+      dil ke andar rakhna aur bhi bhaari hota hai 😞</p>
+    </div>
+    <div class="username-tag">@swan____2010</div>
+  </div>
+
+  <!-- Screen 5 -->
+  <div class="screen" id="s5">
+    <div class="card">
+      <p>Sach yeh hai ki
+      kuch feelings logon ke jaane ke baad bhi
+      zinda rehti hain 💭
+      woh dheere-dheere kam hoti hain,
+      lekin kabhi poori tarah marti nahi 💔
+
+      Mujhe umeed hai tum khush ho 😊
+      sach mein khush.
+      Chahe us khushi mein
+      mera naam kahin bhi na ho 🤍</p>
+    </div>
+    <div class="username-tag">@swan____2010</div>
+  </div>
+
+  <!-- Screen 6 -->
+  <div class="screen" id="s6">
+    <div class="card">
+      <p>Kabhi agar meri yaad aaye,
+      toh bas itna yaad rakhna—
+      maine tumhe lightly nahi liya tha.
+      Tum mere liye ek phase nahi thi,
+      tum ek chapter thi 📖
+
+      Shayad main har baar
+      sahi words use nahi kar paaya,
+      lekin intention hamesha saaf tha 🫶</p>
+    </div>
+    <div class="username-tag">@swan____2010</div>
+  </div>
+
+  <!-- Screen 7 -->
+  <div class="screen" id="s7">
+    <div class="card">
+      <p>Kabhi-kabhi hum kisi ko is kadar chah lete hain
+      ki unhe khona bhi pyaar ka hi ek hissa lagta hai 💔
+      aur shayad
+      pyaar ka matlab jeetna nahi hota,
+      kabhi-kabhi chhod dena bhi hota hai 🌫️
+
+      Aaj bhi kuch gaane sunta hoon 🎧
+      toh tum yaad aa jaati ho,
+      kuch jagah se guzarta hoon
+      toh dil ruk sa jaata hai 🥀</p>
+    </div>
+    <div class="username-tag">@swan____2010</div>
+  </div>
+
+  <!-- Screen 8 -->
+  <div class="screen" id="s8">
+    <div class="card">
+      <p>Par main seekh raha hoon…
+      tumhare bina rehna,
+      tumhari yaadon ke saath jeena,
+      aur khud ko dheere-dheere sambhalna 🌱
+
+      Main tumse naraaz nahi hoon.
+      Bas thoda thak gaya hoon.
+      Expectations se,
+      yaadon se,
+      aur un “agar” se jo kabhi poore nahi hue 🫥</p>
+    </div>
+    <div class="username-tag">@swan____2010</div>
+  </div>
+
+  <!-- Screen 9 -->
+  <div class="screen" id="s9">
+    <div class="card">
+      <p>Shayad hum sath rehne ke liye bane hi nahi the,
+      par ek doosre ko feel karne ke liye zaroor bane the ✨
+
+      Aur agar kahin, kabhi,
+      tum mujhe yaad karo…
+      toh bas itna samajh lena—
+      koi tha
+      jisne tumhe poore dil se chaha tha 🤍</p>
+      
+      <p class="faded-end">Har chapter ko closure ki zarurat nahi hoti.
+      Kuch kahaniyaan bas acceptance maangti hain… 🌑🕊️</p>
+    </div>
+    <div class="username-tag">@swan____2010</div>
+  </div>
+
+  <script>
+    const music = document.getElementById('music');
+    const progressBar = document.getElementById('progress-bar');
+    let currentStep = 1;
+    const totalSteps = 9;
+    const slideTime = 15000; // Updated to 15 seconds per slide
+
+    function beginMagic() {
+      music.volume = 0.2;
+      music.play().catch(() => console.log("Audio interaction required"));
+      document.getElementById('start-btn').style.display = 'none';
+      startAutomation();
+    }
+
+    function startAutomation() {
+      const autoTimer = setInterval(() => {
+        if (currentStep < totalSteps) {
+          showNextScreen();
+        } else {
+          clearInterval(autoTimer);
+          progressBar.style.width = '100%';
+        }
+      }, slideTime);
+      
+      progressBar.style.width = (currentStep / totalSteps) * 100 + '%';
+    }
+
+    function showNextScreen() {
+      const current = document.getElementById(`s${currentStep}`);
+      currentStep++;
+      const next = document.getElementById(`s${currentStep}`);
+
+      if (current && next) {
+        current.style.display = 'none';
+        next.style.display = 'block';
+        setTimeout(() => next.classList.add('active'), 50);
+        progressBar.style.width = (currentStep / totalSteps) * 100 + '%';
+      }
+    }
+
+    function createParticle() {
+      const p = document.createElement('div');
+      p.classList.add('particle');
+      const size = Math.random() * 2 + 1 + 'px';
+      p.style.width = size; p.style.height = size;
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.top = '110vh';
+      p.style.animationDuration = Math.random() * 5 + 10 + 's';
+      document.body.appendChild(p);
+      setTimeout(() => p.remove(), 12000);
+    }
+    setInterval(createParticle, 500);
+  </script>
+</body>
+</html>
