@@ -1,185 +1,186 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en" class="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>For Someone I Once Loved 🕊️</title>
-  <link href="fonts.googleapis.com" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chimera UI – DeepSeek FREE</title>
 
-  <style>
-    :root {
-      --gold: #dfc27d;
-      --soft-white: #f4f4f4;
-      --text-gray: #a0a0a0;
-      --broken-heart-color: #a33b3b;
-    }
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-
-    body {
-      height: 100vh;
-      background: radial-gradient(circle at center, #1a1a1a, #000000);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden; /* Hide overflow to make hearts fall from above */
-      color: var(--soft-white);
-      text-align: center;
-    }
-
-    /* Remove the progress bar at the top */
-    .progress-container, .mini-loader-bg {
-      display: none !important;
-    }
-
-    .screen {
-      display: none;
-      opacity: 0;
-      width: 90%;
-      max-width: 550px;
-    }
-
-    .screen.active {
-      display: block;
-      animation: smoothFadeIn 1s ease forwards;
-    }
-
-    @keyframes smoothFadeIn {
-      from { opacity: 0; transform: translateY(10px); filter: blur(5px); }
-      to { opacity: 1; transform: translateY(0); filter: blur(0); }
-    }
-
-    .card {
-      background: rgba(255, 255, 255, 0.02);
-      padding: 40px 25px;
-      border-radius: 20px;
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px); 
-      border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    h1 { font-family: 'Dancing Script', cursive; font-size: 1.8rem; color: var(--gold); margin-bottom: 20px; line-height: 1.5; }
-    p { font-size: 0.95rem; line-height: 1.7; color: var(--soft-white); font-weight: 300; white-space: pre-line; }
-
-    #start-btn {
-      margin-top: 30px;
-      padding: 12px 40px;
-      background: transparent;
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      cursor: pointer;
-      text-transform: uppercase;
-      font-size: 0.8rem;
-    }
-
-    .username-tag { margin-top: 15px; font-size: 0.75rem; color: var(--text-gray); letter-spacing: 1px; opacity: 0.5; }
-    .faded-end { font-size: 0.8rem; color: var(--text-gray); margin-top: 20px; font-style: italic; opacity: 0.6; }
-
-    /* Broken Heart Animation */
-    .broken-heart {
-      position: fixed;
-      top: -50px; /* Start above the viewport (address bar area) */
-      color: var(--broken-heart-color);
-      pointer-events: none;
-      z-index: 1000;
-      animation: fallAndFade linear forwards;
-    }
-
-    @keyframes fallAndFade {
-      0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(110vh) rotate(360deg);
-        opacity: 0.2;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <audio id="music" loop>
-    <source src="https://pagalfree.com/play/128-Pal%20Pal%20-%20Afusic%20128%20Kbps.mp3" type="audio/mpeg">
-  </audio>
-
-  <!-- Screen 1: Intro (3s) -->
-  <div class="screen active" id="s1">
-    <div class="card">
-      <h1>Kuch log zindagi se jaate nahi…<br>bas zindagi ka hissa rehna band kar dete hain 💔</h1>
-      <button id="start-btn" onclick="beginMagic()">Open</button>
-    </div>
-    <div class="username-tag">@swan____2010</div>
-  </div>
-
-  <!-- Screens 2-9: (8s) -->
-  <div class="screen" id="s2"><div class="card"><p>Mujhe aaj bhi yaad hai jab sab kuch simple tha 🙂 jab baatein kam thi par feelings genuine thi ❤️</p></div><div class="username-tag">@swan____2010</div></div>
-  <div class="screen" id="s3"><div class="card"><p>Mujhe nahi pata humare beech cheezein kab badli. Shayad dheere-dheere ⏳ shayad ek hi pal mein ⚡</p></div><div class="username-tag">@swan____2010</div></div>
-  <div class="screen" id="s4"><div class="card"><p>Bas itna pata hai— jo bhi tha, mere liye real tha 💯. Maine kabhi perfection ka vaada nahi kiya.</p></div><div class="username-tag">@swan____2010</div></div>
-  <div class="screen" id="s5"><div class="card"><p>Tum kabhi meri safe place thi 🏠 jahan main bina bole samjha jaata tha, aur aaj… tum sirf ek yaad ho 🚶‍♂️</p></div><div class="username-tag">@swan____2010</div></div>
-  <div class="screen" id="s6"><div class="card"><p>Sach yeh hai ki kuch feelings logon ke jaane ke baad bhi zinda rehti hain 💭 woh kabhi poori tarah marti nahi 💔</p></div><div class="username-tag">@swan____2010</div></div>
-  <div class="screen" id="s7"><div class="card"><p>Mujhe umeed hai tum khush ho 😊 sach mein khush. Chahe us khushi mein mera naam kahin bhi na ho 🤍</p></div><div class="username-tag">@swan____2010</div></div>
-  <div class="screen" id="s8"><div class="card"><p>Aaj bhi kuch gaane sunta hoon 🎧 toh tum yaad aa jaati ho... Main seekh raha hoon tumhare bina rehna 🌱</p></div><div class="username-tag">@swan____2010</div></div>
-  <div class="screen" id="s9"><div class="card"><p>Agar kabhi tum mujhe yaad karo… toh bas itna samajh lena— koi tha jisne tumhe poore dil se chaha tha 🤍</p><p class="faded-end">Kuch kahaniyaan bas acceptance maangti hain… 🌑🕊️</p></div><div class="username-tag">@swan____2010</div></div>
-
-  <script>
-    const music = document.getElementById('music');
-    let currentStep = 1;
-    const totalSteps = 9;
-    const slideDuration = 8000; // 8 Seconds for slides 2-9
-    const introDuration = 3000; // 3 Seconds for slide 1
-
-    function beginMagic() {
-      music.volume = 0.2;
-      music.play();
-      document.getElementById('start-btn').style.display = 'none';
-      
-      // Intro slide moves fast
-      setTimeout(() => {
-        showNextScreen();
-        startAutomation();
-      }, introDuration);
-    }
-
-    function startAutomation() {
-      const autoTimer = setInterval(() => {
-        if (currentStep < totalSteps) {
-          showNextScreen();
-        } else {
-          clearInterval(autoTimer);
+<script>
+tailwind.config = {
+    darkMode: 'class',
+    theme: {
+        extend: {
+            fontFamily: {
+                sans: ['Inter', 'sans-serif'],
+                mono: ['JetBrains Mono', 'monospace'],
+            }
         }
-      }, slideDuration); 
+    }
+}
+</script>
+
+<style>
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-thumb{background:#27272a;border-radius:3px}
+.typing-cursor::after{content:'▋';animation:blink 1s infinite}
+@keyframes blink{50%{opacity:0}}
+.prose-custom code{background:#27272a;padding:2px 4px;border-radius:4px}
+.prose-custom pre{background:#18181b;padding:1rem;border-radius:.5rem}
+</style>
+</head>
+
+<body class="bg-black text-zinc-400 font-sans h-screen flex flex-col">
+
+<!-- HEADER -->
+<div class="h-14 border-b border-zinc-800 flex items-center justify-between px-4">
+    <div class="text-white font-medium">Chimera UI</div>
+    <div class="text-xs bg-zinc-900 px-3 py-1 rounded">
+        deepseek/deepseek-r1:free
+    </div>
+</div>
+
+<!-- CHAT -->
+<div id="chatContainer" class="flex-1 overflow-y-auto p-4">
+    <div id="messagesList" class="max-w-3xl mx-auto space-y-6">
+        <div id="emptyState" class="text-center text-zinc-500 mt-20">
+            How can I help you today?
+        </div>
+    </div>
+</div>
+
+<!-- INPUT -->
+<div class="p-4 border-t border-zinc-800">
+<form onsubmit="handleSubmit(event)" class="max-w-3xl mx-auto flex gap-2">
+    <textarea id="promptInput" rows="1"
+        class="flex-1 bg-zinc-925 border border-zinc-800 rounded px-3 py-2 resize-none"
+        placeholder="Send a message..."></textarea>
+    <button id="sendBtn" disabled
+        class="bg-white text-black px-4 rounded disabled:opacity-30">
+        Send
+    </button>
+</form>
+</div>
+
+<script>
+// ================= CONFIG =================
+
+// ✅ API KEY DIRECT CODE ME (baad me replace karna)
+const apiKey = ""; 
+// example later: const apiKey = "sk-or-xxxxxxxxxxxxxxxx";
+
+const model = "deepseek/deepseek-r1:free";
+let messageHistory = [];
+
+// ================= ELEMENTS =================
+const messagesList = document.getElementById("messagesList");
+const emptyState = document.getElementById("emptyState");
+const promptInput = document.getElementById("promptInput");
+const sendBtn = document.getElementById("sendBtn");
+const chatContainer = document.getElementById("chatContainer");
+
+// ================= INPUT =================
+promptInput.addEventListener("input",()=>{
+    sendBtn.disabled = !promptInput.value.trim();
+});
+
+// ================= UI =================
+function addUser(msg){
+    emptyState.style.display="none";
+    const div=document.createElement("div");
+    div.className="flex justify-end";
+    div.innerHTML=`<div class="bg-zinc-800 text-white px-4 py-2 rounded-xl max-w-[70%]">${escapeHtml(msg)}</div>`;
+    messagesList.appendChild(div);
+}
+
+function addAI(){
+    const div=document.createElement("div");
+    const id="ai-"+Date.now();
+    div.innerHTML=`
+    <div class="flex gap-3">
+        <div class="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center">✨</div>
+        <div id="${id}" class="prose-custom typing-cursor"></div>
+    </div>`;
+    messagesList.appendChild(div);
+    return document.getElementById(id);
+}
+
+function scrollBottom(){
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+}
+
+// ================= SEND =================
+async function handleSubmit(e){
+    e.preventDefault();
+    const text=promptInput.value.trim();
+    if(!text) return;
+
+    addUser(text);
+    messageHistory.push({role:"user",content:text});
+    promptInput.value="";
+    sendBtn.disabled=true;
+
+    const aiBox=addAI();
+    scrollBottom();
+
+    const response = await fetch("https://openrouter.ai/api/v1/chat/completions",{
+        method:"POST",
+        headers:{
+            "Authorization":`Bearer ${apiKey}`,
+            "Content-Type":"application/json",
+            "X-Title":"Chimera UI"
+        },
+        body:JSON.stringify({
+            model,
+            messages:messageHistory,
+            stream:true
+        })
+    });
+
+    const reader=response.body.getReader();
+    const decoder=new TextDecoder();
+    let full="";
+
+    while(true){
+        const {done,value}=await reader.read();
+        if(done) break;
+        const chunk=decoder.decode(value);
+        for(const line of chunk.split("\n")){
+            if(!line.startsWith("data: ")) continue;
+            const data=line.slice(6);
+            if(data==="[DONE]") break;
+            try{
+                const json=JSON.parse(data);
+                const delta=json.choices?.[0]?.delta?.content;
+                if(delta){
+                    full+=delta;
+                    aiBox.innerHTML=parseMarkdown(full);
+                    scrollBottom();
+                }
+            }catch{}
+        }
     }
 
-    function showNextScreen() {
-      const current = document.getElementById(`s${currentStep}`);
-      currentStep++;
-      const next = document.getElementById(`s${currentStep}`);
-      if (current && next) {
-        current.style.display = 'none';
-        next.style.display = 'block';
-        setTimeout(() => next.classList.add('active'), 50);
-      }
-    }
-    
-    // Function to create and animate broken hearts
-    function createBrokenHeart() {
-      const heart = document.createElement('div');
-      heart.classList.add('broken-heart');
-      heart.innerHTML = '💔';
-      heart.style.left = Math.random() * 95 + 'vw';
-      heart.style.fontSize = (Math.random() * 20 + 20) + 'px'; // Size between 20px and 40px
-      heart.style.animationDuration = (Math.random() * 4 + 6) + 's'; // Fall speed 6s to 10s
-      
-      document.body.appendChild(heart);
-      // Remove heart element after animation finishes
-      setTimeout(() => heart.remove(), 10000); 
-    }
+    aiBox.classList.remove("typing-cursor");
+    messageHistory.push({role:"assistant",content:full});
+}
 
-    // Spawn hearts every 500ms
-    setInterval(createBrokenHeart, 500);
+// ================= HELPERS =================
+function escapeHtml(t){
+    return t.replace(/[&<>"]/g,m=>({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[m]));
+}
+function parseMarkdown(t){
+    let h=escapeHtml(t);
+    h=h.replace(/```([\s\S]*?)```/g,"<pre><code>$1</code></pre>");
+    h=h.replace(/`([^`]+)`/g,"<code>$1</code>");
+    h=h.replace(/\*\*(.*?)\*\*/g,"<strong>$1</strong>");
+    h=h.replace(/\n/g,"<br>");
+    return h;
+}
+</script>
 
-  </script>
 </body>
 </html>
-
